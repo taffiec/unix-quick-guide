@@ -1,0 +1,175 @@
+\documentclass[a4paper]{article}
+    \usepackage{fullpage}
+    \usepackage{multicol}
+    \usepackage{pdflscape}
+    \usepackage{textcomp}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{geometry}
+    \usepackage{array}
+    \usepackage{varwidth}
+    \textheight=10in
+    \pagestyle{empty}
+    \raggedright
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+\geometry{a4paper, 
+total={200mm,257mm},
+ left=20mm,
+ top=10mm,
+ bottom=10mm
+ }
+
+ \begin{document}
+ \begin{landscape}
+ \setlength\columnsep{5pt}
+ \begin{multicols}{3}
+
+%==== Title  ====%
+\begin{center}
+	{\large \textbf{Quick guide to SSH/SFTP/Unix}}\\
+	\textit{Author: Taffie Coler}\\
+	\textit{taffie.coler@gmail.com}\\
+\end{center}
+
+%==== Column 1 ====%
+Notice: These are very basic, and not all commands nor are all the users of the commands listed here. This is for a beginner's quick reference, and has some tips and tricks for starting out.
+
+\vspace{2mm}
+\textbf{What is SSH?}\\
+Secure Shell is a protocol used to remotely access your
+shell account, proxy, etc. securely over a network.\\
+
+\vspace{2mm}
+\textbf{Connecting using SFTP or SSH}\\
+sftp [username]@[remote-path]\\
+ex: sftp slayerx@p1.cs.ohiou.edu\\
+ssh [username]@[remote-path]\\
+ex: ssh slayerx@p2.cs.ohiou.edu\\
+
+\vspace{2mm}
+\textbf{Wildcard Characters}\\
+The \textit{asterisk} * represents any amount of characters.
+g++ *.cc says, “g++, compile all of my .cc files please”
+The \textit{question mark} ? represents exactly one character.
+ls file.??? says, “list all files with a 3 character extension.\\
+
+\vspace{2mm}
+\textbf{Terminology}\\
+\textit{remote path/r-path} – path of remote computer\\
+\textit{local path/l-path} – path of computer you are on\\
+Bracketed words – are in place of strings, do not include\\
+brackets when you type commands in.\\
+
+\vspace{2mm}
+\textbf{Redirecting standard input and output}\\
+The \textit{pipe operator} | feeds the output of one command to
+the input of another. For example, \verb+history | grep ssh+ will
+ output any line in your command history where
+the string ssh occurs.\\
+The \textit{output redirection operator} > will direct the output of
+a command into a file. If the file does not exist, it will
+create it, if it does, it will \textbf{overwrite} the old file.\\
+\textit{Another output redirection operator} >> directs the output
+of a command into a file, but instead appends to the file.\\
+
+\columnbreak 
+\textbf{Bash (Bourne-again Shell)}\\
+Bash is a shell for the GNU operating system. Its features
+include tab completion and unlimited command history,
+accessible by the up and down arrows. To get into the
+bash shell, simply type \verb+bash+ at the command prompt. To
+get out of bash shell, simply type \verb+exit+.\\
+
+\vspace{2mm}
+\textbf{Basic Unix Commands}\\
+
+\begin{tabular}{ l l }
+bash & changes to bash shell\\
+cat [files] & display or concatenate files\\
+cat [file1] >> [file2] & append file1 to file2\\
+cd & change directory\\
+cp[file] [path] & copies a file to designated path\\
+diff [file1] [file2] & compares two files, shows diff++\\
+exit & exits out of shell\\
+find [path] -name [file] & returns full path of file\\
+g++ [file.cc] & compiles your c++ programs\\
+grep [pattern] [file] & searches through files for pattern\\
+head [file] & displays first 10 lines of file\\
+history & displays command history\\
+kill -9 [process id] & kills process by pid\\
+less [file] & lets you scroll through output\\
+lpr [file] & send file to printer\\
+man [command] & reference page for command\\
+mkdir [dir name] & creates a directory\\
+passwd & changes password\\
+ps & shows active processes\\
+pwd & print working directory\\
+rm [file] & remove file\\
+rmdir [directory] & remove [empty] directory\\
+tail [file] & displays last 10 lines of file\\
+top & shows top 15 system processes\\
+which [command] & shows full path of shell command\\
+\end{tabular}
+
+\vspace{2mm}
+\textbf{Running files in the background}\\
+When opening things from a terminal, you notice that if
+you type in the command line, gedit, you will no
+longer be able to run commands in your terminal. Instead,
+type \verb+gedit &+ the ampersand '\verb+&+' tells it to run in the
+background. Using this method, you can run multiple
+programs and still retain the use of your command line.
+
+\vspace{2mm}
+\textbf{What is SFTP?}\\
+Secure File Transfer Protocol is a protocol that uses SSH
+and lets you manage, access, and transfer your files
+securely over a network.
+
+\vspace{2mm}
+\textbf{SFTP Commands}\\
+\begin{tabular}{ l l }
+cd & change directory\\
+dir/ls & display remote directory listing\\
+exit/quit/bye & quit sftp\\
+get [r-path] [l-path] & download file\\
+help/? & display help text\\
+lcd & change directory [locally]\\
+lls & display local directory listing\\
+lmkdir & make directory [locally]\\
+lpwd & print local directory listing\\
+mkdir & make directory [remotely]\\
+put [l-path] [r-path] & upload file\\
+pwd & print remote working directory\\
+rename [old] [new] & rename remote file\\
+rm & remove remote file\\
+rmdir & remove remote directory\\
+! & escape to local shell\\
+![command] & execute command in local shell\\
+\end{tabular}
+
+\vspace{2mm}
+\textbf{Using text editors}\\
+Text editors are programs that are used to edit files. There
+are many that you can use, such as: emacs, gedit, nano/pico
+and vi/vim. To use these, simply type the editor name,
+followed by the file name - \verb+emacs file.cc &+ which
+will open an existing or create a new file with that name.
+
+\vspace{2mm}
+\textbf{Warning about closing terminal windows}\\
+If you close a terminal window that you are currently using
+to run a program (for instance, gedit) it will close down all
+processes associated with that terminal window. Be careful
+to remember what you used it for and save often!
+
+\vspace{2mm}
+References\\
+"User Commands."\textit{Ubuntu 10.04.3 LTS, LucidLynx}, Man
+Page Tomb, Date: Man Page Reference. Shell. Date
+Accessed: January 29, 2012.
+
+\end{multicols}
+\end{landscape}
+\end{document}
